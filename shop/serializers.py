@@ -1,4 +1,3 @@
-from django.db.models import Avg
 from rest_framework import serializers
 from .models import *
 
@@ -48,11 +47,11 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['id', 'title', 'price', 'category_data', 'category_id', 'owner_data', 'owner_id', 'review_count', 'reviews',
+        fields = ['id', 'title', 'description', 'price', 'category_data', 'category_id', 'owner_data', 'owner_id', 'review_count', 'reviews',
         ]
 
     def get_review_count(self, obj):
-        return Review.objects.filter(product=obj).count()
+        return obj.review_set.count()
     
 
 

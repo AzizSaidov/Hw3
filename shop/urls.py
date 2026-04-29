@@ -3,13 +3,13 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('products/', get_all_products),
-    path('products/<int:pk>/', get_product),
-    path('products/create/', create_productds),
-    path('products/update/<int:pk>/', update_product),
-    path('products/delete/<int:pk>/', delete_product),
+    path('products/', ProductListView.as_view()),
+    path('products/<int:pk>/', ProductDetailView.as_view()),
+    path('products/create/', ProductCreateView.as_view()),
+    path('products/update/<int:pk>/', ProductUpdateView.as_view()),
+    path('products/delete/<int:pk>/', ProductDeleteView.as_view()),
 
-    path('reviews/', get_reviews),
-    path('reviews/create/', create_review),
+    path('reviews/', ReviewListView.as_view()),
+    path('reviews/create/', ReviewCreateView.as_view()),
 
 ]
